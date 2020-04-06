@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".view.SplashScreenActivity"
+    android:id="@+id/splashScreen"
+    android:background="#1a232d">
+
+    <ImageView
+        android:id="@+id/icon"
+        android:layout_width="200dp"
+        android:layout_height="200dp"
+        android:src="@drawable/ppp"
+        android:layout_centerInParent="true"/>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/icon"
+        android:orientation="vertical"
+        android:layout_marginTop="50dp"
+        android:layout_centerInParent="true"
+        >
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="CORONA VIRUS"
+            android:textColor="#C71831"
+            android:textSize="32sp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/statistic"
+            android:textColor="@color/color_Orange"
+            android:layout_gravity="end"
+            android:textSize="14sp" />
+
+    </LinearLayout>
+
+
+
+
+    <TextView
+        android:layout_above="@+id/cc"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="40dp"
+        android:layout_centerHorizontal="true"
+        android:layout_alignParentBottom="true"
+        android:text="Copyright By Parvez Ahmed"
+        android:textColor="@color/colorGrayDip"
+        android:textSize="12sp" />
+
+    <TextView
+        android:id="@+id/cc"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="20dp"
+        android:layout_centerHorizontal="true"
+        android:layout_alignParentBottom="true"
+        android:text="@string/source_by_worldometers_info"
+        android:textColor="@color/colorGrayDip"
+        android:textSize="10sp" />
+
+</RelativeLayout>

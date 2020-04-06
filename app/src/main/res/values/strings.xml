@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">Corona Statistics</string>
+    <string name="statistic">Statistics</string>
+    <string name="source_by_worldometers_info">source by worldometers.info</string>
+</resources>

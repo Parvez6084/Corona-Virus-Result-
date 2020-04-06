@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".view.MainActivity"
+    android:background="@color/colorPrimary">
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        android:layout_margin="20dp"
+        app:cardBackgroundColor="@color/colorSpeceGray"
+        app:cardCornerRadius="8dp"
+        >
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="16dp"
+                android:text="Choose Your Country"
+                android:textColor="@color/colorWhite"
+                android:textSize="16sp" />
+
+
+            <AutoCompleteTextView
+                android:layout_below="@+id/text"
+                android:id="@+id/country_Et"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Select a country"
+                android:layout_margin="16dp"
+                android:padding="10dp"
+                android:textSize="14dp"
+                android:inputType="textEmailAddress"
+                android:textColor="@color/colorWhite"
+                android:textColorHint="@color/colorGrayDip"
+                android:background="@drawable/edit_text_bg"/>
+
+
+            <Button
+                android:id="@+id/select_button"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="@color/colorBlack"
+                android:background="@color/color_Orange"
+                android:layout_alignParentBottom="true"
+                android:textAllCaps="false"
+                android:text="Apply" />
+
+        </RelativeLayout>
+
+    </androidx.cardview.widget.CardView>
+
+
+</RelativeLayout>
