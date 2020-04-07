@@ -3,13 +3,10 @@ package com.supernova.coronavirus.view;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.View;
-import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
 import android.widget.Button;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.ViewModelProviders;
@@ -17,8 +14,7 @@ import androidx.lifecycle.ViewModelProviders;
 import com.supernova.coronavirus.R;
 import com.supernova.coronavirus.model.CountryModel;
 import com.supernova.coronavirus.utility.MyPreferences;
-import com.supernova.coronavirus.utility.Utility;
-import com.supernova.coronavirus.viewModel.DashBoadViewModel;
+import com.supernova.coronavirus.viewModel.DashBoardViewModel;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -36,8 +32,7 @@ public class MainActivity extends AppCompatActivity {
     AutoCompleteTextView countryEt;
     @BindView(R.id.select_button)
     Button selectButton;
-    DashBoadViewModel dashBoadViewModel;
-    private List<CountryModel> countryModels;
+    DashBoardViewModel dashBoardViewModel;
     private List<String> countryNames;
     private MyPreferences myPreferences;
 
@@ -47,21 +42,20 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         ButterKnife.bind(this);
         Objects.requireNonNull(getSupportActionBar()).hide();
-        dashBoadViewModel = ViewModelProviders.of(this).get(DashBoadViewModel.class);
+        dashBoardViewModel = ViewModelProviders.of(this).get(DashBoardViewModel.class);
         myPreferences = new MyPreferences(this);
 
-        ProgressDialog pdialog = new ProgressDialog(this);
-        pdialog.setTitle("Please wait");
-        pdialog.setMessage("Take in process ...");
-        pdialog.setCancelable(false);
-        pdialog.show();
+        ProgressDialog dialog = new ProgressDialog(this);
+        dialog.setTitle(getString(R.string.dialog_title));
+        dialog.setMessage(getString(R.string.dialog_boady));
+        dialog.setCancelable(false);
+        dialog.show();
 
-        dashBoadViewModel.countryModelLiveData().observe(this, countries -> {
+        dashBoardViewModel.countryModelLiveData().observe(this, countries -> {
 
             if (countries != null) {
-                pdialog.dismiss();
+                dialog.dismiss();
 
-                this.countryModels = countries;
                 this.countryNames = new ArrayList<>();
 
                 for (CountryModel c : countries) {
@@ -69,17 +63,10 @@ public class MainActivity extends AppCompatActivity {
                 }
                 ArrayAdapter<String> arrayAdapter = new ArrayAdapter<>(MainActivity.this, android.R.layout.simple_list_item_1, countryNames);
                 countryEt.setAdapter(arrayAdapter);
-
             }
 
-            countryEt.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            countryEt.setOnItemClickListener((parent, arg1, pos, id) -> {
 
-                @Override
-                public void onItemClick(AdapterView<?> parent, View arg1, int pos,
-                                        long id) {
-
-
-                }
             });
 
         });
@@ -91,9 +78,9 @@ public class MainActivity extends AppCompatActivity {
         myPreferences.cleanDataSharedPreferences();
         if (countryNames.contains(countryEt.getText().toString())) {
             myPreferences.setCountryName(countryEt.getText().toString());
-            startActivity(new Intent(MainActivity.this, DashboadActivity.class));
+            startActivity(new Intent(MainActivity.this, DashboardActivity.class));
         } else {
-            countryEt.setError("Select a Country");
+            countryEt.setError(getString(R.string.edit_text_null_warning));
         }
     }
 }

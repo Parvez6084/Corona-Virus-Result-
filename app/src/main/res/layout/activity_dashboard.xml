@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".view.DashboadActivity"
+    tools:context=".view.DashboardActivity"
     android:background="@color/colorPrimary">
 
     <ScrollView
@@ -25,7 +25,7 @@
                 android:layout_marginEnd="16dp"
                 android:layout_marginTop="16dp"
                 android:visibility="visible"
-                app:cardBackgroundColor="@color/colorSpeceGray"
+                app:cardBackgroundColor="@color/colorSpaceGray"
                 app:cardCornerRadius="8dp">
 
                 <RelativeLayout
@@ -33,14 +33,14 @@
                     android:layout_height="match_parent">
 
                     <ImageView
-                        android:id="@+id/cardCancleButton"
+                        android:id="@+id/cardCancelButton"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_alignParentEnd="true"
                         android:src="@drawable/ic_cancel"
                         android:layout_marginEnd="10dp"
                         android:layout_marginTop="10dp"
-                        />
+                        tools:ignore="ContentDescription" />
 
                 </RelativeLayout>
 
@@ -85,7 +85,7 @@
                                 android:layout_height="wrap_content"
                                 android:drawableStart="@drawable/ic_stop"
                                 android:drawableTint="@color/color_Orange"
-                                android:text="Confirmed"
+                                android:text="@string/confirmed"
                                 android:textColor="@color/colorWhite" />
 
                             <TextView
@@ -93,7 +93,7 @@
                                 android:layout_height="wrap_content"
                                 android:drawableStart="@drawable/ic_stop"
                                 android:drawableTint="@color/colorGreen"
-                                android:text="Recovery"
+                                android:text="@string/recovery"
                                 android:textColor="@color/colorWhite" />
 
                             <TextView
@@ -101,7 +101,7 @@
                                 android:layout_height="wrap_content"
                                 android:drawableStart="@drawable/ic_stop"
                                 android:drawableTint="@color/colorLightRed"
-                                android:text="Deaths"
+                                android:text="@string/deaths"
                                 android:textColor="@color/colorWhite" />
 
 
@@ -114,7 +114,8 @@
                         android:layout_height="wrap_content"
                         android:layout_marginTop="20dp"
                         android:orientation="horizontal"
-                        android:weightSum="3">
+                        android:weightSum="3"
+                        android:baselineAligned="false">
 
                         <LinearLayout
                             android:layout_width="wrap_content"
@@ -127,7 +128,7 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_gravity="center"
-                                android:text="0"
+                                android:text="@string/zero"
                                 android:textColor="@color/colorWhite"
                                 android:textSize="18sp"
                                 />
@@ -137,7 +138,7 @@
                                 android:layout_height="wrap_content"
                                 android:layout_gravity="center"
                                 android:layout_marginTop="5dp"
-                                android:text="Today Confirmed"
+                                android:text="@string/today_confirmed"
                                 android:textColor="@color/colorGrayDip"
                                 android:textSize="14sp" />
 
@@ -154,7 +155,7 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_gravity="center"
-                                android:text="0"
+                                android:text="@string/zero"
                                 android:textColor="@color/colorWhite"
                                 android:textSize="18sp"
                                 />
@@ -164,7 +165,7 @@
                                 android:layout_height="wrap_content"
                                 android:layout_gravity="center"
                                 android:layout_marginTop="5dp"
-                                android:text="Today Deaths"
+                                android:text="@string/today_deaths"
                                 android:textColor="@color/colorGrayDip"
                                 android:textSize="14sp" />
 
@@ -181,7 +182,7 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_gravity="center"
-                                android:text="0"
+                                android:text="@string/zero"
                                 android:textColor="@color/colorWhite"
                                 android:textSize="18sp"
                                 />
@@ -191,7 +192,7 @@
                                 android:layout_height="wrap_content"
                                 android:layout_gravity="center"
                                 android:layout_marginTop="5dp"
-                                android:text="Active Cases"
+                                android:text="@string/active_cases"
                                 android:textColor="@color/colorGrayDip"
                                 android:textSize="14sp" />
 
@@ -206,7 +207,8 @@
                         android:layout_marginTop="10dp"
                         android:layout_marginBottom="16dp"
                         android:orientation="horizontal"
-                        android:weightSum="3">
+                        android:weightSum="3"
+                        android:baselineAligned="false">
 
                         <LinearLayout
                             android:layout_width="wrap_content"
@@ -219,7 +221,7 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_gravity="center"
-                                android:text="0"
+                                android:text="@string/zero"
                                 android:textColor="@color/colorWhite"
                                 android:textSize="18sp"
                                 />
@@ -229,7 +231,7 @@
                                 android:layout_height="wrap_content"
                                 android:layout_gravity="center"
                                 android:layout_marginTop="5dp"
-                                android:text="Total Confirmed"
+                                android:text="@string/total_confirmed"
                                 android:textColor="@color/colorGrayDip"
                                 android:textSize="14sp" />
 
@@ -246,7 +248,7 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_gravity="center"
-                                android:text="0"
+                                android:text="@string/zero"
                                 android:textColor="@color/colorWhite"
                                 android:textSize="18sp"
                                 />
@@ -256,7 +258,7 @@
                                 android:layout_height="wrap_content"
                                 android:layout_gravity="center"
                                 android:layout_marginTop="5dp"
-                                android:text="Total Deaths"
+                                android:text="@string/total_deaths"
                                 android:textColor="@color/colorGrayDip"
                                 android:textSize="14sp" />
 
@@ -273,7 +275,7 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_gravity="center"
-                                android:text="0"
+                                android:text="@string/zero"
                                 android:textColor="@color/colorWhite"
                                 android:textSize="18sp"
                                 />
@@ -283,7 +285,7 @@
                                 android:layout_height="wrap_content"
                                 android:layout_gravity="center"
                                 android:layout_marginTop="5dp"
-                                android:text="Total Recovered"
+                                android:text="@string/total_recovered"
                                 android:textColor="@color/colorGrayDip"
                                 android:textSize="14sp" />
 
@@ -300,7 +302,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="16dp"
-                app:cardBackgroundColor="@color/colorSpeceGray"
+                app:cardBackgroundColor="@color/colorSpaceGray"
                 app:cardCornerRadius="8dp">
 
                 <LinearLayout
@@ -314,7 +316,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginStart="16dp"
                         android:layout_marginTop="10dp"
-                        android:text="World COVID-19 CORONA VIRUS"
+                        android:text="@string/world_covid_19_corona_virus"
                         android:textColor="@color/colorWhite"
                         android:textSize="16sp" />
 
@@ -352,7 +354,7 @@
                                 android:layout_height="wrap_content"
                                 android:drawableStart="@drawable/ic_stop"
                                 android:drawableTint="@color/color_Orange"
-                                android:text="Confirmed"
+                                android:text="@string/confirmed"
                                 android:textColor="@color/colorWhite" />
 
                             <TextView
@@ -360,7 +362,7 @@
                                 android:layout_height="wrap_content"
                                 android:drawableStart="@drawable/ic_stop"
                                 android:drawableTint="@color/colorGreen"
-                                android:text="Recovery"
+                                android:text="@string/recovery"
                                 android:textColor="@color/colorWhite" />
 
                             <TextView
@@ -368,7 +370,7 @@
                                 android:layout_height="wrap_content"
                                 android:drawableStart="@drawable/ic_stop"
                                 android:drawableTint="@color/colorLightRed"
-                                android:text="Deaths"
+                                android:text="@string/deaths"
                                 android:textColor="@color/colorWhite" />
 
 
@@ -382,7 +384,8 @@
                         android:layout_marginTop="20dp"
                         android:layout_marginBottom="20dp"
                         android:orientation="horizontal"
-                        android:weightSum="3">
+                        android:weightSum="3"
+                        android:baselineAligned="false">
 
                         <LinearLayout
                             android:layout_width="wrap_content"
@@ -395,7 +398,7 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_gravity="center"
-                                android:text="0"
+                                android:text="@string/zero"
                                 android:textColor="@color/colorWhite"
                                 android:textSize="18sp"
                                 />
@@ -405,7 +408,7 @@
                                 android:layout_height="wrap_content"
                                 android:layout_gravity="center"
                                 android:layout_marginTop="5dp"
-                                android:text="Total Confirmed"
+                                android:text="@string/total_confirmed"
                                 android:textColor="@color/colorGrayDip"
                                 android:textSize="14sp" />
 
@@ -422,7 +425,7 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_gravity="center"
-                                android:text="0"
+                                android:text="@string/zero"
                                 android:textColor="@color/colorWhite"
                                 android:textSize="18sp"
                                 />
@@ -432,7 +435,7 @@
                                 android:layout_height="wrap_content"
                                 android:layout_gravity="center"
                                 android:layout_marginTop="5dp"
-                                android:text="Total Deaths"
+                                android:text="@string/total_deaths"
                                 android:textColor="@color/colorGrayDip"
                                 android:textSize="14sp" />
 
@@ -449,7 +452,7 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_gravity="center"
-                                android:text="0"
+                                android:text="@string/zero"
                                 android:textColor="@color/colorWhite"
                                 android:textSize="18sp"
                                 />
@@ -459,7 +462,7 @@
                                 android:layout_height="wrap_content"
                                 android:layout_gravity="center"
                                 android:layout_marginTop="5dp"
-                                android:text="Total Recovered"
+                                android:text="@string/total_recovered"
                                 android:textColor="@color/colorGrayDip"
                                 android:textSize="14sp" />
 

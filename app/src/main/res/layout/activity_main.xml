@@ -8,10 +8,11 @@
     android:background="@color/colorPrimary">
 
     <androidx.cardview.widget.CardView
+        android:id="@+id/country_select"
         android:layout_width="match_parent"
         android:layout_height="200dp"
         android:layout_margin="20dp"
-        app:cardBackgroundColor="@color/colorSpeceGray"
+        app:cardBackgroundColor="@color/colorSpaceGray"
         app:cardCornerRadius="8dp"
         >
         <RelativeLayout
@@ -25,7 +26,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="16dp"
                 android:layout_marginTop="16dp"
-                android:text="Choose Your Country"
+                android:text="@string/choose_your_country"
                 android:textColor="@color/colorWhite"
                 android:textSize="16sp" />
 
@@ -35,10 +36,10 @@
                 android:id="@+id/country_Et"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="Select a country"
+                android:hint="@string/select_a_country"
                 android:layout_margin="16dp"
                 android:padding="10dp"
-                android:textSize="14dp"
+                android:textSize="14sp"
                 android:inputType="textEmailAddress"
                 android:textColor="@color/colorWhite"
                 android:textColorHint="@color/colorGrayDip"
@@ -53,11 +54,76 @@
                 android:background="@color/color_Orange"
                 android:layout_alignParentBottom="true"
                 android:textAllCaps="false"
-                android:text="Apply" />
+                android:text="@string/apply" />
 
         </RelativeLayout>
 
     </androidx.cardview.widget.CardView>
 
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/country_select"
+        android:layout_margin="16dp"
+        app:cardBackgroundColor="@color/colorSpaceGray"
+        app:cardCornerRadius="8dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="16dp"
+                android:layout_marginBottom="24dp"
+                android:text="@string/language_change"
+                android:textColor="@color/colorWhite"
+                android:textSize="16sp" />
+
+            <RadioGroup
+                android:id="@+id/chooseOne_layout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginTop="10dp"
+                android:weightSum="2">
+
+                <RadioButton
+                    android:id="@+id/english_language"
+                    android:layout_width="0dp"
+                    android:layout_height="50dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/rb_pas"
+                    android:button="@color/transparent"
+                    android:checked="true"
+                    android:gravity="center"
+                    android:text="@string/english"
+                    android:textColor="@drawable/text_rb"
+                    android:textSize="14sp" />
+
+                <RadioButton
+                    android:id="@+id/bangla_language"
+                    android:layout_width="0dp"
+                    android:layout_height="50dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/rb_pas"
+                    android:button="@color/transparent"
+                    android:gravity="center"
+                    android:text="@string/bangla"
+                    android:textColor="@drawable/text_rb"
+                    android:textSize="14sp" />
+
+            </RadioGroup>
+
+
+        </LinearLayout>
+
+
+
+
+    </androidx.cardview.widget.CardView>
 
 </RelativeLayout>

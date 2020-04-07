@@ -31,13 +31,11 @@ public class MyPreferences {
     public void setCountryName(String name) {
 
         editor = sharedPreferences.edit();
-
         editor.putString(Constant.COUNTRY, name);
         editor.apply();
     }
 
     public void cleanDataSharedPreferences() {
-
         editor = sharedPreferences.edit();
         editor.clear();
         editor.apply();

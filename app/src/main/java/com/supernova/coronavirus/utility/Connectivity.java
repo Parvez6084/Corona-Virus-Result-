@@ -7,11 +7,11 @@ import android.telephony.TelephonyManager;
 
 public class Connectivity {
 
-    public static NetworkInfo getNetworkInfo(Context context) {
+    private static NetworkInfo getNetworkInfo(Context context) {
         ConnectivityManager cm = (ConnectivityManager) context.getSystemService(Context.CONNECTIVITY_SERVICE);
+        assert cm != null;
         return cm.getActiveNetworkInfo();
     }
-
 
     public static boolean isConnected(Context context) {
         NetworkInfo info = Connectivity.getNetworkInfo(context);
@@ -36,7 +36,7 @@ public class Connectivity {
         return (info != null && info.isConnected() && Connectivity.isConnectionFast(info.getType(), info.getSubtype()));
     }
 
-    public static boolean isConnectionFast(int type, int subType) {
+    private static boolean isConnectionFast(int type, int subType) {
         if (type == ConnectivityManager.TYPE_WIFI) {
             return true;
         } else if (type == ConnectivityManager.TYPE_MOBILE) {

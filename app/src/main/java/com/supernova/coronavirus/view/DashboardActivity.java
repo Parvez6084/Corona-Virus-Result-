@@ -1,13 +1,12 @@
 package com.supernova.coronavirus.view;
 
+import android.annotation.SuppressLint;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
-import android.text.Spannable;
 import android.text.SpannableString;
 import android.text.Spanned;
-import android.text.format.DateFormat;
 import android.text.style.ForegroundColorSpan;
 import android.view.View;
 import android.widget.ImageView;
@@ -31,21 +30,19 @@ import com.supernova.coronavirus.R;
 import com.supernova.coronavirus.model.CountryModel;
 import com.supernova.coronavirus.utility.MyPreferences;
 import com.supernova.coronavirus.utility.Utility;
-import com.supernova.coronavirus.viewModel.DashBoadViewModel;
+import com.supernova.coronavirus.viewModel.DashBoardViewModel;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
-import java.util.Locale;
 import java.util.Objects;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 
-public class DashboadActivity extends AppCompatActivity {
+public class DashboardActivity extends AppCompatActivity {
 
     @BindView(R.id.country_name_tv)
     TextView countryNameTv;
@@ -79,39 +76,40 @@ public class DashboadActivity extends AppCompatActivity {
     FloatingActionButton floatingActionButton;
     @BindView(R.id.date_tv)
     TextView dateTv;
-    DashBoadViewModel dashBoadViewModel;
-    @BindView(R.id.cardCancleButton)
-    ImageView cardCancleButton;
+    DashBoardViewModel dashBoardViewModel;
+    @BindView(R.id.cardCancelButton)
+    ImageView cardCancelButton;
     private float totalConfirm = 0, totalRecovery = 0, totalDeaths = 0;
-    private float ctotalConfirm = 0, ctotalRecovery = 0, ctotalDeaths = 0;
-    private float todayActive = 0, todaytotalConfirm = 0, todaytotalDeaths = 0;
+    private float cTotalConfirm = 0, cTotalRecovery = 0, cTotalDeaths = 0;
+    private float todayActive = 0, todayTotalConfirm = 0, todayTotalDeaths = 0;
 
     private long updateTime;
     private List<CountryModel> countryModels;
-    private List<String> countryNames;
+    public List<String> countryNames;
     private MyPreferences myPreferences;
 
+    @SuppressLint("SetTextI18n")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_dashboad);
+        setContentView(R.layout.activity_dashboard);
         ButterKnife.bind(this);
         Objects.requireNonNull(getSupportActionBar()).hide();
-        dashBoadViewModel = ViewModelProviders.of(this).get(DashBoadViewModel.class);
+        dashBoardViewModel = ViewModelProviders.of(this).get(DashBoardViewModel.class);
         myPreferences = new MyPreferences(this);
         countryCardView.setVisibility(View.GONE);
 
-        ProgressDialog pdialog = new ProgressDialog(this);
-        pdialog.setTitle("Please wait");
-        pdialog.setMessage("Take in process ...");
-        pdialog.setCancelable(false);
-        pdialog.show();
+        ProgressDialog dialog = new ProgressDialog(this);
+        dialog.setTitle(getString(R.string.dialog_title));
+        dialog.setMessage(getString(R.string.dialog_boady));
+        dialog.setCancelable(false);
+        dialog.show();
 
-        dashBoadViewModel.dataModelLiveData().observe(this, allDataModel -> {
+        dashBoardViewModel.dataModelLiveData().observe(this, allDataModel -> {
 
             if (allDataModel != null) {
 
-                pdialog.dismiss();
+                dialog.dismiss();
 
                 totalConfirm = allDataModel.getCases();
                 totalRecovery = allDataModel.getRecovered();
@@ -124,7 +122,7 @@ public class DashboadActivity extends AppCompatActivity {
 
                 SpannableString spannableString = new SpannableString(date);
                 ForegroundColorSpan colorWhitesText = new ForegroundColorSpan(Color.WHITE);
-                spannableString.setSpan(colorWhitesText,11,23, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
+                spannableString.setSpan(colorWhitesText, 11, 23, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
 
                 dateTv.setText(spannableString);
                 worldTotalConfirmedTv.setText(Math.round(totalConfirm) + "");
@@ -156,7 +154,6 @@ public class DashboadActivity extends AppCompatActivity {
                     public void onNothingSelected() {
                         worldDynamicArcView.setUsePercentValues(true);
                         worldDynamicArcView.setDrawHoleEnabled(true);
-
                     }
                 });
             }
@@ -166,10 +163,10 @@ public class DashboadActivity extends AppCompatActivity {
             countryCardView.setVisibility(View.GONE);
         } else {
             countryCardView.setVisibility(View.VISIBLE);
-            dashBoadViewModel.countryModelLiveData().observe(this, countries -> {
+            dashBoardViewModel.countryModelLiveData().observe(this, countries -> {
 
                 if (countries != null) {
-                    pdialog.dismiss();
+                    dialog.dismiss();
                     this.countryModels = countries;
                     this.countryNames = new ArrayList<>();
                     for (CountryModel c : countries) {
@@ -180,28 +177,29 @@ public class DashboadActivity extends AppCompatActivity {
                     CountryModel country = Utility.searchItem(countryModels, searchName);
                     if (countryNames != null) {
 
+                        assert country != null;
                         String countryName = country.getCountry();
-                        ctotalConfirm = country.getCases();
-                        todaytotalConfirm = country.getTodayCases();
-                        ctotalRecovery = country.getRecovered();
+                        cTotalConfirm = country.getCases();
+                        todayTotalConfirm = country.getTodayCases();
+                        cTotalRecovery = country.getRecovered();
                         todayActive = country.getActive();
-                        ctotalDeaths = country.getDeaths();
-                        todaytotalDeaths = country.getTodayDeaths();
+                        cTotalDeaths = country.getDeaths();
+                        todayTotalDeaths = country.getTodayDeaths();
 
                         countryNameTv.setText(countryName + " CORONA VIRUS");
-                        countryTotalConfirmedTv.setText(Math.round(ctotalConfirm) + "");
-                        countryTotalDeathsTv.setText(Math.round(ctotalDeaths) + "");
-                        countryTotalRecoveryTv.setText(Math.round(ctotalRecovery) + "");
-                        countryNewConformedTv.setText(Math.round(todaytotalConfirm) + "");
+                        countryTotalConfirmedTv.setText(Math.round(cTotalConfirm) + "");
+                        countryTotalDeathsTv.setText(Math.round(cTotalDeaths) + "");
+                        countryTotalRecoveryTv.setText(Math.round(cTotalRecovery) + "");
+                        countryNewConformedTv.setText(Math.round(todayTotalConfirm) + "");
                         countryActiveCasesTv.setText(Math.round(todayActive) + "");
-                        countryNewDeathsTv.setText(Math.round(todaytotalDeaths) + "");
+                        countryNewDeathsTv.setText(Math.round(todayTotalDeaths) + "");
 
                         chart(countryDynamicArcView);
                         ArrayList<PieEntry> countryList = new ArrayList<>();
 
-                        countryList.add(new PieEntry(ctotalRecovery, ""));
-                        countryList.add(new PieEntry(ctotalConfirm, ""));
-                        countryList.add(new PieEntry(ctotalDeaths, ""));
+                        countryList.add(new PieEntry(cTotalRecovery, ""));
+                        countryList.add(new PieEntry(cTotalConfirm, ""));
+                        countryList.add(new PieEntry(cTotalDeaths, ""));
 
                         PieDataSet pieDataSet = new PieDataSet(countryList, "");
                         pieDataSet.setSliceSpace(0f);
@@ -225,15 +223,11 @@ public class DashboadActivity extends AppCompatActivity {
                                 countryDynamicArcView.setDrawHoleEnabled(true);
 
                             }
-
                         });
-
                     }
-
                 }
             });
         }
-
 
 
     }
@@ -241,12 +235,12 @@ public class DashboadActivity extends AppCompatActivity {
 
     private void chart(PieChart pieChart) {
 
-        pieChart.setUsePercentValues(true);
+        pieChart.setUsePercentValues(false);
         pieChart.getDescription().setEnabled(false);
         pieChart.setExtraOffsets(0, 0, 0, 0);
         pieChart.setDragDecelerationFrictionCoef(0.95f);
-        pieChart.setDrawHoleEnabled(true);
-        pieChart.setHoleColor(getResources().getColor(R.color.colorSpeceGray));
+        pieChart.setDrawHoleEnabled(false);
+        pieChart.setHoleColor(getResources().getColor(R.color.colorSpaceGray));
         pieChart.setTransparentCircleRadius(0f);
         pieChart.animateY(1400, Easing.EaseInOutQuad);
         pieChart.setHoleRadius(72f);
@@ -257,15 +251,15 @@ public class DashboadActivity extends AppCompatActivity {
         pieChart.getLegend().setEnabled(false);
     }
 
-    @OnClick({R.id.cardCancleButton, R.id.floating_action_button})
+    @OnClick({R.id.cardCancelButton, R.id.floating_action_button})
     public void onViewClicked(View view) {
         switch (view.getId()) {
-            case R.id.cardCancleButton:
+            case R.id.cardCancelButton:
                 myPreferences.cleanDataSharedPreferences();
                 countryCardView.setVisibility(View.GONE);
                 break;
             case R.id.floating_action_button:
-                startActivity(new Intent(DashboadActivity.this, MainActivity.class));
+                startActivity(new Intent(DashboardActivity.this, MainActivity.class));
                 break;
         }
     }

@@ -6,7 +6,6 @@ import android.os.Handler;
 import android.widget.RelativeLayout;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.content.ContextCompat;
 
 import com.google.android.material.snackbar.Snackbar;
 import com.supernova.coronavirus.R;
@@ -33,11 +32,11 @@ public class SplashScreenActivity extends AppCompatActivity {
 
             if ((Connectivity.isConnectedFast(this))) {
 
-                Intent i = new Intent(SplashScreenActivity.this, DashboadActivity.class);
+                Intent i = new Intent(SplashScreenActivity.this, DashboardActivity.class);
                 startActivity(i);
                 finish();
             } else {
-                Snackbar snack = Snackbar.make(splashScreen, "Please check internet connection & restate apps!!", Snackbar.LENGTH_INDEFINITE);
+                Snackbar snack = Snackbar.make(splashScreen, R.string.no_internet_warning, Snackbar.LENGTH_INDEFINITE);
                 snack.show();
             }
 

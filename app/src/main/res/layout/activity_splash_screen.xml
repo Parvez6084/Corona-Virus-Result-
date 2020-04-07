@@ -12,7 +12,8 @@
         android:layout_width="200dp"
         android:layout_height="200dp"
         android:src="@drawable/ppp"
-        android:layout_centerInParent="true"/>
+        android:layout_centerInParent="true"
+        tools:ignore="ContentDescription" />
 
     <LinearLayout
         android:layout_width="wrap_content"
@@ -26,7 +27,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="CORONA VIRUS"
+            android:text="@string/corona_virus"
             android:textColor="#C71831"
             android:textSize="32sp" />
 
@@ -50,7 +51,7 @@
         android:layout_marginBottom="40dp"
         android:layout_centerHorizontal="true"
         android:layout_alignParentBottom="true"
-        android:text="Copyright By Parvez Ahmed"
+        android:text="@string/copyright_by_parvez_ahmed"
         android:textColor="@color/colorGrayDip"
         android:textSize="12sp" />
 
@@ -63,6 +64,7 @@
         android:layout_alignParentBottom="true"
         android:text="@string/source_by_worldometers_info"
         android:textColor="@color/colorGrayDip"
-        android:textSize="10sp" />
+        android:textSize="10sp"
+        tools:ignore="SmallSp" />
 
 </RelativeLayout>

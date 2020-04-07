@@ -1,7 +1,6 @@
 package com.supernova.coronavirus.utility;
 
 import com.supernova.coronavirus.model.CountryModel;
-
 import java.util.List;
 
 public class Utility {
@@ -11,7 +10,6 @@ public class Utility {
         for (CountryModel c : countries) {
 
             if (c.getCountry().trim().toLowerCase().equals(name.trim().toLowerCase())) {
-
                 return c;
             }
         }

@@ -13,7 +13,7 @@
         android:roundIcon="@mipmap/ic_launcher_main_logo_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".view.DashboadActivity"/>
+        <activity android:name=".view.DashboardActivity"/>
         <activity android:name=".view.SplashScreenActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
