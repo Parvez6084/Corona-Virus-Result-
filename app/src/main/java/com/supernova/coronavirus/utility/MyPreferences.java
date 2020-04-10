@@ -28,10 +28,22 @@ public class MyPreferences {
         return sharedPreferences.getString(Constant.COUNTRY, "");
     }
 
+    public String getDefaultLanguage() {
+
+        return sharedPreferences.getString(Constant.DefaultLanguage, "");
+    }
+
     public void setCountryName(String name) {
 
         editor = sharedPreferences.edit();
         editor.putString(Constant.COUNTRY, name);
+        editor.apply();
+    }
+
+    public void setDefaultLanguage(String name) {
+
+        editor = sharedPreferences.edit();
+        editor.putString(Constant.DefaultLanguage, name);
         editor.apply();
     }
 

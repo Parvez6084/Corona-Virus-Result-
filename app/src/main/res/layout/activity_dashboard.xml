@@ -6,6 +6,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     tools:context=".view.DashboardActivity"
+    android:id="@+id/dashboardActivity"
     android:background="@color/colorPrimary">
 
     <ScrollView
@@ -59,6 +60,15 @@
                         android:layout_marginTop="10dp"
                         android:textColor="@color/colorWhite"
                         android:textSize="16sp" />
+
+                    <TextView
+                        android:id="@+id/country_date_tv"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="16dp"
+                        android:layout_marginTop="5dp"
+                        android:textColor="@color/colorGrayDip"
+                        android:textSize="12sp" />
 
                     <RelativeLayout
                         android:layout_width="wrap_content"
@@ -488,7 +498,7 @@
         android:layout_alignParentBottom="true"
         android:layout_margin="16dp"
         android:backgroundTint="@color/color_Orange"
-        app:srcCompat="@drawable/ic_language"
+        app:srcCompat="@drawable/ic_add_black_24dp"
         />
 
 </RelativeLayout>

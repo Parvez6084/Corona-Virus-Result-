@@ -3,23 +3,24 @@ package com.supernova.coronavirus.view;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
-import android.widget.RelativeLayout;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.google.android.material.snackbar.Snackbar;
 import com.supernova.coronavirus.R;
-import com.supernova.coronavirus.utility.Connectivity;
+import com.supernova.coronavirus.utility.MyPreferences;
+import com.supernova.coronavirus.utility.Utility;
 
+import java.util.Locale;
 import java.util.Objects;
 
-import butterknife.BindView;
 import butterknife.ButterKnife;
 
 public class SplashScreenActivity extends AppCompatActivity {
 
-    @BindView(R.id.splashScreen)
-    RelativeLayout splashScreen;
+    private static final String BANGLA_LOCALE = "bn";
+    private static final String ENGLISH_LOCALE = "en_US";
+    private MyPreferences myPreferences;
+    private Locale locale;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -27,18 +28,22 @@ public class SplashScreenActivity extends AppCompatActivity {
         setContentView(R.layout.activity_splash_screen);
         ButterKnife.bind(this);
         Objects.requireNonNull(getSupportActionBar()).hide();
-
+        myPreferences = new MyPreferences(this);
         new Handler().postDelayed(() -> {
 
-            if ((Connectivity.isConnectedFast(this))) {
+            if (myPreferences.getDefaultLanguage().equals(BANGLA_LOCALE)) {
+                locale = new Locale(BANGLA_LOCALE);
+                Utility.setLanguage(this, locale);
+                recreate();
+            } else {
+                locale = new Locale(ENGLISH_LOCALE);
+                Utility.setLanguage(this, locale);
+                recreate();
+            }
 
                 Intent i = new Intent(SplashScreenActivity.this, DashboardActivity.class);
                 startActivity(i);
                 finish();
-            } else {
-                Snackbar snack = Snackbar.make(splashScreen, R.string.no_internet_warning, Snackbar.LENGTH_INDEFINITE);
-                snack.show();
-            }
 
         }, 3000);
 

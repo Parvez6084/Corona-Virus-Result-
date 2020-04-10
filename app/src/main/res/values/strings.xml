@@ -2,11 +2,11 @@
     <string name="app_name">Corona Statistics</string>
     <string name="statistic">Statistics</string>
     <string name="source_by_worldometers_info">source by worldometers.info</string>
-    <string name="no_internet_warning"><![CDATA[Please check internet connection & restate apps!!]]></string>
+    <string name="no_internet_warning">Please check internet connection  !!</string>
     <string name="edit_text_null_warning">Select a Country</string>
     <string name="dialog_title">Please wait</string>
     <string name="dialog_boady">Take in process ...</string>
-    <string name="corona_virus">CORONA VIRUS</string>
+    <string name="corona_virus">CORONAVIRUS</string>
     <string name="copyright_by_parvez_ahmed">Copyright By Parvez Ahmed</string>
     <string name="choose_your_country">Choose Your Country</string>
     <string name="select_a_country">Select a country</string>
@@ -15,7 +15,7 @@
     <string name="deaths">Deaths</string>
     <string name="recovery">Recovery</string>
     <string name="confirmed">Confirmed</string>
-    <string name="world_covid_19_corona_virus">World COVID-19 CORONA VIRUS</string>
+    <string name="world_covid_19_corona_virus">World COVID-19 CORONAVIRUS</string>
     <string name="total_recovered">Total Recovered</string>
     <string name="total_deaths">Total Deaths</string>
     <string name="total_confirmed">Total Confirmed</string>
@@ -25,4 +25,5 @@
     <string name="english">English</string>
     <string name="bangla">বাংলা</string>
     <string name="language_change">Language Change</string>
+    <string name="corona">COVID-19 CORONAVIRUS</string>
 </resources>
